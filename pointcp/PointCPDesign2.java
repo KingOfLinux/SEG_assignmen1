@@ -12,7 +12,7 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class PointCP extends CP
+public class PointCPDesign2 extends CP
 {
   //Instance variables ************************************************
 
@@ -53,36 +53,36 @@ public class PointCP extends CP
   //Instance methods **************************************************
 
 
-  public double getX()
+  public void getX()
   {
     if(typeCoord == 'C')
+      System.out.println( xOrRho );
+    else
+      System.out.println( (Math.cos(Math.toRadians(yOrTheta)) * xOrRho));
+  }
+
+  public void getY()
+  {
+    if(typeCoord == 'C')
+      System.out.println(yOrTheta);
+    else
+      System.out.println( (Math.sin(Math.toRadians(yOrTheta)) * xOrRho));
+  }
+
+  public double getRho()
+  {
+    if(typeCoord == 'P')
       return xOrRho;
     else
-      return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+      return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
   }
 
-  public double getY()
+  public double getTheta()
   {
-    if(typeCoord == 'C')
+    if(typeCoord == 'P')
       return yOrTheta;
     else
-      return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
-  }
-
-  public void getRho()
-  {
-    if(typeCoord == 'P')
-      System.out.println( xOrRho);
-    else
-      System.out.println("Rho computed on demand " +(Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2))));
-  }
-
-  public void getTheta()
-  {
-    if(typeCoord == 'P')
-      System.out.println( yOrTheta);
-    else
-      System.out.println("Theta computed on demand "+ Math.toDegrees(Math.atan2(yOrTheta, xOrRho)));
+      return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
   }
 
 
@@ -94,9 +94,9 @@ public class PointCP extends CP
     if(typeCoord != 'P')
     {
       //Calculate RHO and THETA
-      getRho();
-      getTheta();
-
+      double temp = getRho();
+      yOrTheta = getTheta();
+      xOrRho = temp;
 
       typeCoord = 'P';  //Change coord type identifier
     }
@@ -110,9 +110,8 @@ public class PointCP extends CP
     if(typeCoord != 'C')
     {
       //Calculate X and Y
-      double temp = getX();
-      yOrTheta = getY();
-      xOrRho = temp;
+      getX();
+      getY();
 
       typeCoord = 'C';	//Change coord type identifier
     }
@@ -163,7 +162,7 @@ public class PointCP extends CP
   public String toString()
   {
     return "Stored as " + (typeCoord == 'C'
-       ? "Cartesian  (" + getX() + "," + getY() + ")"
-       : "Polar [" + "," + "]") + "\n";
+       ? "Cartesian  ("  + ","  + ")"
+       : "Polar [" + getRho() + "," + getTheta() + "]") + "\n";
   }
 }
