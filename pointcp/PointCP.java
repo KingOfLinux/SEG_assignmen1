@@ -69,20 +69,20 @@ public class PointCP
       return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
 
-  public double getRho()
+  public void getRho()
   {
     if(typeCoord == 'P')
-      return xOrRho;
+      System.out.println( xOrRho);
     else
-      return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+      System.out.println("Rho computed on demand " +(Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2))));
   }
 
-  public double getTheta()
+  public void getTheta()
   {
     if(typeCoord == 'P')
-      return yOrTheta;
+      System.out.println( yOrTheta);
     else
-      return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
+      System.out.println("Theta computed on demand "+ Math.toDegrees(Math.atan2(yOrTheta, xOrRho)));
   }
 
 
@@ -94,9 +94,9 @@ public class PointCP
     if(typeCoord != 'P')
     {
       //Calculate RHO and THETA
-      double temp = getRho();
-      yOrTheta = getTheta();
-      xOrRho = temp;
+      getRho();
+      getTheta();
+      //xOrRho = temp;
 
       typeCoord = 'P';  //Change coord type identifier
     }
@@ -164,6 +164,6 @@ public class PointCP
   {
     return "Stored as " + (typeCoord == 'C'
        ? "Cartesian  (" + getX() + "," + getY() + ")"
-       : "Polar [" + getRho() + "," + getTheta() + "]") + "\n";
+       : "Polar [" + "," + "]") + "\n";
   }
 }
