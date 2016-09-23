@@ -1,3 +1,7 @@
+
+import java.util.Random;
+
+
 public class PointCPTest_Design5
 {
 
@@ -13,14 +17,21 @@ public class PointCPTest_Design5
         long[] medianArray1 = new long[100];
         long[] medianArray2 = new long[100];
 
+        Random r = new Random();
+        Random r2 = new Random();
+
+
+
         for (int k = 0; k<numberOfRuns; k++){
+          double randomValue1 =  (100) * r.nextDouble();
+          double randomValue2 =  (100) * r2.nextDouble();
 
         System.out.println("Running Design 1...");
 
         before = System.nanoTime();
         for (int i = 0; i<numberOfPoints; i++)
         {
-            PointCP point = new PointCP('C', 1, 1);
+            PointCP point = new PointCP('C', randomValue1, randomValue2);
             point.getRho();
             point.getTheta();
         }
@@ -52,7 +63,7 @@ public class PointCPTest_Design5
         before = System.nanoTime();
         for (int i = 0; i<numberOfPoints; i++)
         {
-            PointCP_Abstract point = new PointCP_Design2('C', 1, 1);
+            PointCP_Abstract point = new PointCP_Design2('C', randomValue1, randomValue2);
             point.convertStorageToPolar();
         }
         after= System.nanoTime();
