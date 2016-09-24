@@ -1,6 +1,6 @@
 // This file contains material supporting section 2.9 of the textbook:
 // "Object Oriented Software Engineering" and is issued under the open-source
-// license found at www.lloseng.com
+// license found at www.lloseng.com 
 
 /**
  * This class contains instances of coordinates in either polar or
@@ -21,20 +21,20 @@ public class PointCP
    * coordinates that are being dealt with.
    */
   private char typeCoord;
-
+  
   /**
    * Contains the current value of X or RHO depending on the type
    * of coordinates.
    */
   private double xOrRho;
-
+  
   /**
    * Contains the current value of Y or THETA value depending on the
    * type of coordinates.
    */
   private double yOrTheta;
-
-
+	
+  
   //Constructors ******************************************************
 
   /**
@@ -48,44 +48,44 @@ public class PointCP
     this.yOrTheta = yOrTheta;
     typeCoord = type;
   }
-
-
+	
+  
   //Instance methods **************************************************
-
-
+ 
+ 
   public double getX()
   {
-    if(typeCoord == 'C')
+    if(typeCoord == 'C') 
       return xOrRho;
-    else
+    else 
       return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
   }
-
+  
   public double getY()
   {
-    if(typeCoord == 'C')
+    if(typeCoord == 'C') 
       return yOrTheta;
-    else
+    else 
       return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
-
+  
   public double getRho()
   {
-    if(typeCoord == 'P')
+    if(typeCoord == 'P') 
       return xOrRho;
-    else
+    else 
       return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
   }
-
+  
   public double getTheta()
   {
     if(typeCoord == 'P')
       return yOrTheta;
-    else
+    else 
       return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
   }
-
-
+  
+	
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
@@ -97,11 +97,11 @@ public class PointCP
       double temp = getRho();
       yOrTheta = getTheta();
       xOrRho = temp;
-
+      
       typeCoord = 'P';  //Change coord type identifier
     }
   }
-
+	
   /**
    * Converts Polar coordinates to Cartesian coordinates.
    */
@@ -113,7 +113,7 @@ public class PointCP
       double temp = getX();
       yOrTheta = getY();
       xOrRho = temp;
-
+   
       typeCoord = 'C';	//Change coord type identifier
     }
   }
@@ -132,7 +132,7 @@ public class PointCP
     // will be squared later.
     double deltaX = getX() - pointB.getX();
     double deltaY = getY() - pointB.getY();
-
+    
     return Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
   }
 
@@ -149,7 +149,7 @@ public class PointCP
     double radRotation = Math.toRadians(rotation);
     double X = getX();
     double Y = getY();
-
+        
     return new PointCP('C',
       (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
       (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
@@ -162,7 +162,7 @@ public class PointCP
    */
   public String toString()
   {
-    return "Stored as " + (typeCoord == 'C'
+    return "Stored as " + (typeCoord == 'C' 
        ? "Cartesian  (" + getX() + "," + getY() + ")"
        : "Polar [" + getRho() + "," + getTheta() + "]") + "\n";
   }
