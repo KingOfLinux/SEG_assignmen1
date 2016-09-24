@@ -1,4 +1,4 @@
-public class PointCP_Design2 extends PointCP_Abstract
+public class PointCP_Design3 extends PointCP_Abstract
 {
   //Instance variables ************************************************
 
@@ -26,7 +26,7 @@ public class PointCP_Design2 extends PointCP_Abstract
   /**
    * Constructs a coordinate object, with a type identifier.
    */
-  public PointCP_Design2(char type, double xOrRho, double yOrTheta)
+  public PointCP_Design3(char type, double xOrRho, double yOrTheta)
   {
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
@@ -76,7 +76,7 @@ public class PointCP_Design2 extends PointCP_Abstract
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(PointCP_Design2 pointB)
+  public double getDistance(PointCP_Design3 pointB)
   {
     // Obtain differences in X and Y, sign is not important as these values
     // will be squared later.
@@ -94,13 +94,13 @@ public class PointCP_Design2 extends PointCP_Abstract
    * @param rotation The number of degrees to rotate the point.
    * @return The rotated image of the original point.
    */
-  public PointCP_Design2 rotatePoint(double rotation)
+  public PointCP_Design3 rotatePoint(double rotation)
   {
     double radRotation = Math.toRadians(rotation);
     double X = getX();
     double Y = getY();
 
-    return new PointCP_Design2('C',
+    return new PointCP_Design3('C',
       (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
       (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }
