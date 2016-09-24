@@ -11,12 +11,13 @@ public class PointCPTest_Design5
         long after;
         int numberOfPoints = 10000000;
         int numberOfRuns = 25;
-        long max1 = 0, max2 = 0, max3 = 0;
-        long min1 = 1000000000, min2 = 1000000000, min3 = 1000000000;
-        long med1, med2, med3;
+        long max1 = 0, max2 = 0, max3 = 0, max4 = 0;
+        long min1 = 1000000000, min2 = 1000000000, min3 = 1000000000, min4 = 1000000000;
         long[] medianArray1 = new long[100];
         long[] medianArray2 = new long[100];
         long[] medianArray3 = new long[100];
+        long[] medianArray4 = new long[100];
+
 
         Random r = new Random();
         Random r2 = new Random();
@@ -59,7 +60,7 @@ public class PointCPTest_Design5
         System.out.println("Time elapsed (nanoseconds): " + (after-before));
 
 //begining for test of design #5 concrete design #2
-        System.out.println("Running Design 5...");
+        System.out.println("Running Design 5-2...");
 
         before = System.nanoTime();
         for (int i = 0; i<numberOfPoints; i++)
@@ -85,6 +86,34 @@ public class PointCPTest_Design5
           System.out.println();
 
         }
+
+        System.out.println("Running Design 5-3...");
+
+        before = System.nanoTime();
+        for (int i = 0; i<numberOfPoints; i++)
+        {
+            PointCP_Abstract point = new PointCP_Design3('C', randomValue1, randomValue2);
+            point.convertStorageToPolar();
+        }
+        after= System.nanoTime();
+
+        System.out.println("Time elapsed (nanoseconds): " + (after-before));
+        medianArray2[k] = after-before;
+        if (after-before<min4 ){
+          min4 = after-before;
+          System.out.println();
+          System.out.println("Minimum time " +min4);
+          System.out.println();
+
+        }
+        if (after-before>max4){
+          max4 = after-before;
+          System.out.println();
+          System.out.println("Maximum time " +max4);
+          System.out.println();
+
+        }
+
 
         //begining for test of design #3
 
@@ -121,9 +150,13 @@ public class PointCPTest_Design5
       System.out.println("Maximum time for implementation 1 " +max1);
       System.out.println("Median for inmplemetation 1 " + medianArray1[numberOfRuns/2]);
       System.out.println();
-      System.out.println("Minimum time for implementation 5 " +min2);
-      System.out.println("Maximum time for implementation 5 " +max2);
+      System.out.println("Minimum time for implementation 5-2 " +min2);
+      System.out.println("Maximum time for implementation 5-2 " +max2);
       System.out.println("Median for inmplemetation 5 " + medianArray2[numberOfRuns/2]);
+      System.out.println();
+      System.out.println("Minimum time for implementation 5-2 " +min4);
+      System.out.println("Maximum time for implementation 5-2 " +max4);
+      System.out.println("Median for inmplemetation 5 " + medianArray4[numberOfRuns/2]);
       System.out.println();
       System.out.println("Minimum time for implementation 3 " +min3);
       System.out.println("Maximum time for implementation 3 " +max3);
