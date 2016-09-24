@@ -152,11 +152,11 @@ public class PointCPTest_Design5
       System.out.println();
       System.out.println("Minimum time for implementation 5-2 " +min2);
       System.out.println("Maximum time for implementation 5-2 " +max2);
-      System.out.println("Median for inmplemetation 5 " + medianArray2[numberOfRuns/2]);
+      System.out.println("Median for inmplemetation 5-2 " + medianArray2[numberOfRuns/2]);
       System.out.println();
       System.out.println("Minimum time for implementation 5-2 " +min4);
       System.out.println("Maximum time for implementation 5-2 " +max4);
-      System.out.println("Median for inmplemetation 5 " + medianArray4[numberOfRuns/2]);
+      System.out.println("Median for inmplemetation 5-3 " + medianArray4[numberOfRuns/2]);
       System.out.println();
       System.out.println("Minimum time for implementation 3 " +min3);
       System.out.println("Maximum time for implementation 3 " +max3);
